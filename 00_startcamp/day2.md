@@ -12,8 +12,21 @@ final-처음만들었음.txt
 
 ` git init`
 
-`git add '<filename>'` add == 파일 commit 준비 맘 "잠깐만"
+`git add '<filename>'` add == 파일 commit 준비 aka "찍습니다"
 
 `git commit -m '<message>'` commit == 상태 저장 aka ''찰칵''
 
 `git commit -m '<message>'`
+
+
+
+```bash
+$ git remote add origin "URL" # origin은 공유할 클라우드 이름
+$ git remote -v # 연동 상황 확인
+
+$ git push origin master
+
+```
+
+
+
