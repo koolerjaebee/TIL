@@ -39,3 +39,94 @@ string = '나는 {} 을 먹는다'.format(meal)
 string f'나는 {i+1} 을 먹는다'.
 ```
 
+
+
+## Web 서버 체험
+
+```python
+from flask import Flask
+import random
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return 'Hello world!'
+
+
+@app.route('/hi')
+def hi():
+    return 'hi'
+
+
+@app.route('/pick_lotto')
+def pick_lotto():
+    numbers = range(1, 46)
+    lucky = random.sample(numbers, 6)
+    return str(lucky)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+```
+
+
+
+flask : 서버 구성 import
+
+hard coding : 정확한 입력을 필요로 함
+
+variable routing : 좀 더 유연한 방식
+
+`number ** 3` : 제곱 연산
+
+
+
+## html 작성 방식
+
+`<DOCTYPE html>` : html 선언
+
+H : Hyper
+
+T : Text
+
+M : Markup
+
+L : Language
+
+
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <h1>Today I Learned</h1>
+        <h2>Learn Flask</h2>
+        <ol>
+            <li>pip install Flask</li>
+            <li>touch app.py</li>
+            <li>python app.py</li>
+        </ol>
+        <h2>Learn HTML</h2>
+        <ul>
+            <li>doctype html</li>
+            <li>head, body</li>
+            <li>h1, h2, ol, ul, li</li>
+        </ul>
+    </body>
+</html>
+
+```
+
+
+
+## Data Mining Method
+
+1. Scrapping
+2. API
+3. Package

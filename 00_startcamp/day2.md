@@ -64,7 +64,7 @@ ex) 웹브라우저 문서 (html)
 
 
 
-### 데이터 마이닝
+### Scraping
 
 #### kospi
 
