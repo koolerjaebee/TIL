@@ -1,0 +1,5 @@
+# name = input('wut\'s ur name?\n')
+# print('heeey, ' + name + '. Goood to see ya, man.')
+words = input('입력 고고: \n')
+print(type(words))
+print(words[:1], words[-1:])

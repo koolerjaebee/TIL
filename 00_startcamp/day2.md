@@ -1,4 +1,8 @@
-# What is git?
+# 190709 startcamp -day2
+
+## What is git?
+
+
 
 git: scm(source code manager) / vcs(version control system)
 
@@ -23,12 +27,11 @@ final-처음만들었음.txt
 ```bash
 $ git remote add origin "URL" # origin은 공유할 일반적인 클라우드 이름 학습중에는 github 사용
 $ git remote -v # 연동 상황 확인
-
-$ git push origin master
+$ git push origin master # 사용자 branches
 
 ```
 
-## git ignore
+### git ignore
 
 .gitignore
 
@@ -36,9 +39,7 @@ $ git push origin master
 
 
 
-
-
-# Web
+## Web
 
 ```python
 import webbrowser
@@ -63,9 +64,9 @@ ex) 웹브라우저 문서 (html)
 
 
 
-## 데이터 마이닝
+### 데이터 마이닝
 
-### kospi
+#### kospi
 
 ```python
 import requests
@@ -81,7 +82,7 @@ print(kospi.text)
 
 
 
-### melon top 50
+#### melon top 50
 
 ```python
 import requests
@@ -133,9 +134,9 @@ for row in rows:
 
 
 
-## File Control
+### File Control
 
-## file read
+### file read
 
 ```python
 import csv
@@ -147,7 +148,7 @@ with open('lunch.csv', 'r', encoding='utf-8') as f:
 
 ```
 
-## file write
+### file write
 
 ```python
 lunches = {
@@ -164,9 +165,9 @@ with open('lunch.csv', 'w', encoding='utf-8') as f:
 
 
 
-## web + file write
+### web + file write
 
-### melon top50를 파일로 쓰기
+#### melon top50를 파일로 쓰기
 
 ```python
 import requests
