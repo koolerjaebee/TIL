@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>박스 오피스</title>
+</head>
+<body>
+    <h1>박스 오피스</h1>
+    <ol>
+        {% for movie in top_5 %}
+            <li>{{ movie }}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>
