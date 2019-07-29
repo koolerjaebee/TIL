@@ -6,6 +6,6 @@ class Person:
     
     def __del__(self):
         print(f'Rust in pieces - {self.name}')
-        
+
 
 p = Person('ssafy')
