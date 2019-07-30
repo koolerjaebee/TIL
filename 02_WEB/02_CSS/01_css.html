@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS basic</title>
+    <style>
+      /* !important >inline css > id > *class* > tag > browser 기본 세팅*/
+      /* !important 와 id(JS용)는 일단 우리 수준에서 쓰지 않는다. */
+      /* 모든 것은 class로 돌아간다 */
+      /* class 이름은 색으로 정하지 않는다. */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: red;
+      }
+
+      h2 {
+        color: pink !important;
+      }
+
+      h3 {
+        color: brown;
+      }
+
+      .blue {
+        color: blue;
+      }
+
+      .main-theme {
+        font-size: 100px;
+      }
+
+      #green {
+        color: green;
+      }
+    </style>
+</head>
+<body>
+    <h1 class="main-theme">Hello, CSS</h1>
+    <h2 id="green"class="blue">Selector</h2>
+    <h3 class="blue main-theme">See how it works</h3>
+</body>
+</html>
