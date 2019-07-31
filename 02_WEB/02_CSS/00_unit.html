@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      h1 {
+        font-size: 100%;  /* 브라우저 기본 px / 100% */
+      }
+
+      p {
+        font-size: 1rem;  /* 브라우저 기본 폰트 사이즈 == 1rem (절댓값) */
+        color: #ff0000;
+        /* R    G    B */
+        /* range(256) */
+        /* ff ff ff */
+        /* color: rgba(255, 0, 0, 0.287) a == 투명도 */
+      }
+
+      div {
+        font-size: 100%;  /* 8px */
+      }
+
+      div li {
+        font-size: 2em;  /* 상속받은 100% 가 1em (상댓값)*/
+      }
+
+      div > div {
+        font-size: 0.8em;
+      }
+    </style>
+</head>
+<body>
+  <div>
+    aaaa
+    <div>
+      bbbb
+      <div>
+        cccc
+        <div>dddd</div>
+      </div>
+    </div>
+  </div>
+  <h1>This is my site</h1>
+  <div>
+    <h2>My cafe</h2>
+    <p>This is great cafe</p>
+    <ul>
+      <li>파스타</li>
+      <li>샐러드</li>
+    </ul>
+  </div>
+</body>
+</html>
