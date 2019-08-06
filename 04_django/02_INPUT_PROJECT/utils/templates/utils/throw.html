@@ -1,0 +1,26 @@
+{% extends 'utils/base.html' %}
+{% block title %}전략적 팀 전투 아이템 조합{% endblock %}
+{% block body %}
+<h1>아이템 조합</h1>
+<form action="/utils/catch">
+    <div>
+    <label for="item-1">아이템</label>
+    <select name="item-1" id="item-1">
+        {% for k, v in items.items %}
+        <option value="{{ v }}">{{ k }}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <div>
+    <label for="item-2">아이템</label>
+    <select name="item-2" id="item-2">
+        {% for k, v in items.items %}
+        <option value="{{ v }}">{{ k }}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+{% endblock %}
