@@ -1,0 +1,19 @@
+{% extends 'classroom/base.html' %}
+
+{% block title %}{{ student.id }} detail{% endblock %}
+
+{% block body %}
+    {{student.id}} | {{student.name}} | {{student.age}} | {{student.major}}
+    <div>
+        <a href="{% url 'classroom:lists' %}"><button>lists</button></a>
+    </div>
+    <div>
+        <a href="{% url 'classroom:edit' student.id %}"><button>edit</button></a>
+    </div>
+    <div>
+        <form action="{% url 'classroom:delete' student.id %}" method="POST">
+            {% csrf_token %}
+            <input id="deleteButton" type="submit" value="delete">
+        </form>
+    </div>
+{% endblock %}

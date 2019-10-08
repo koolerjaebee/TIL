@@ -1,0 +1,20 @@
+{% extends 'classroom/base.html' %}
+
+{% block title %}edit {{student.id}}{% endblock %}
+
+{% block body %}
+    <h1>Student info</h1>
+    <form action="{% url 'classroom:update' student.id %}" method="POST">
+        {% csrf_token %}
+        <div>
+            Name : <input type="text" id="name" name="name" value={{student.name}}>
+        </div>
+        <div>
+            Age : <input type="number" id="age" name="age" value={{student.age}}>
+        </div>
+        <div>
+            Major : <input type="text" id="major" name="major" value={{student.major}}>
+        </div>
+        <input type="submit" value="submit">
+    </form>
+{% endblock %}

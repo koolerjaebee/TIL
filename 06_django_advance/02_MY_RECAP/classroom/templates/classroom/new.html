@@ -1,0 +1,20 @@
+{% extends 'classroom/base.html' %}
+
+{% block title %}new{% endblock %}
+
+{% block body %}
+    <h1>Student info</h1>
+    <form action="{% url 'classroom:create' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            Name : <input type="text" id="name" name="name">
+        </div>
+        <div>
+            Age : <input type="number" id="age" name="age">
+        </div>
+        <div>
+            Major : <input type="text" id="major" name="major">
+        </div>
+        <input type="submit" value="submit">
+    </form>
+{% endblock %}
