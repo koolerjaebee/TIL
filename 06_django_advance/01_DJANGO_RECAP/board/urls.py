@@ -6,6 +6,7 @@ app_name = 'board'
 
 urlpatterns = [
     path('', views.index, name='index'),  # board/ == board:index
+
     # Read 글 목록(list) render
     path('articles/', views.list, name='list'),
     # Read 글 상세(detail) render
@@ -13,13 +14,15 @@ urlpatterns = [
 
     # Create 글 쓰기(new) render
     path('articles/new/', views.new, name='new'),
-    # Create 글 저장(create)
-    path('articles/create/', views.create, name='create'),
+    # # Create 글 저장(create)
+    # path('articles/create/', views.create, name='create'),
+    # 합치면서 필요 없어짐
 
     # Update 글 수정쓰기(edit) render
     path('articles/<int:id>/edit/', views.edit, name='edit'),
-    # Update 글 실제수정(update)
-    path('articles/<int:id>/update/', views.update, name='update'),
+    # # Update 글 실제수정(update)
+    # path('articles/<int:id>/update/', views.update, name='update'),
+    # 마찬가지로 리팩토링
 
     # Delete 글 삭제(delete)
     path('articles/<int:id>/delete/', views.delete, name='delete'),

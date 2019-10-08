@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET, require_POST
+
 from .models import Article
+from .forms import ArticleModelForm
 
 
 @require_GET
@@ -22,34 +24,32 @@ def detail(request, id):
     return render(request, 'board/detail.html', context=context)
 
 
-@require_GET
 def new(request):
-    return render(request, 'board/new.html')
+    if request.method == 'POST':
+        form = ArticleModelForm(request.POST)
+
+        if form.is_valid():
+            article = form.save()
+
+            return redirect(article)
+    else:
+        form = ArticleModelForm()
+
+    return render(request, 'board/new.html', {
+        'form': form,
+    })
 
 
-@require_POST
-def create(request):
-    article = Article()
-    article.title = request.POST.get('title')
-    article.content = request.POST.get('content')
-    article.save()
-    return redirect(f'/board/articles/{article.id}/')
-
-
-@require_GET
 def edit(request, id):
     article = Article.objects.get(id=id)
-    context = {'article': article}
-    return render(request, 'board/edit.html', context=context)
-
-
-@require_GET
-def update(request, id):
-    article = Article.objects.get(id=id)
-    article.title = request.POST.get('title')
-    article.content = request.POST.get('content')
-    article.save()
-    return redirect(f'/board/articles/{article.id}/')
+    if request.method == 'POST':
+        article.title = request.POST.get('title')
+        article.content = request.POST.get('content')
+        article.save()
+        return redirect(article)
+    else:
+        context = {'article': article}
+        return render(request, 'board/edit.html', context=context)
 
 
 @require_POST
