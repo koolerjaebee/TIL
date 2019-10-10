@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',  # 반드시 underbar(_)
     'home',
     'board',
+    'accounts',
 ]
 
 MIDDLEWARE = [

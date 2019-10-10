@@ -1,0 +1,55 @@
+{% extends 'board/base.html' %}
+
+{% block title %}
+    Article detail
+{% endblock %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    
+    <form action="{% url 'board:new_comment' article.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="comment_content">
+        <input type="submit" value="comment submit">
+    </form>
+
+    {% if comments %}
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    {{ comment.content }}
+                    <form action="{% url 'board:delete_comment' article.id comment.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="삭제">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div>
+        <a href="{% url 'board:article_list'%}">
+            <button>List</button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'board:edit_article' article.id %}">
+            <button>Edit</button>
+        </a>
+    </div>
+    <div>
+        <form action="{% url 'board:delete_article' article.id %}" method="POST">
+            {% csrf_token %}
+            <input id="delButton" type="submit" value="Delete">
+        </form>
+    </div>
+
+    {% comment %} <script>
+        const delButton = document.querySelector('#delButton');
+        function popUp () {
+            return confirm('isReal?');
+        }
+
+        delButton.addEventListener('mouseover', popUp);
+    </script> {% endcomment %}
+{% endblock %}
