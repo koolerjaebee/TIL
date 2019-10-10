@@ -1,11 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import (require_GET, require_http_methods, require_POST)
 from IPython import embed
-
+​
 from .forms import ArticleModelForm
 from .models import Article
-
-
+​
+​
 # CRUD
 @require_http_methods(['GET', 'POST'])  # 비공식적으로 존재하는 요청이 있음. 얘네 말고 다른 요청이 들어올 수 있기 때문에
 def new(request):
@@ -27,31 +27,28 @@ def new(request):
             return render(request, 'board/new.html', {
                 'form': form,
             })
-
+​
     # GET이라면
     else:
         # 비어있는 form(HTML 생성기)을 만든다.
         form = ArticleModelForm()
         # form과 html을 사용자에게 보여준다.
         return render(request, 'board/new.html', {
-            'form': form,
+            'form':form,
         })
-
-
+​
 def list(request):
     articles = Article.objects.all()
     return render(request, 'board/list.html', {
         'articles': articles,
     })
-
-
+​
 def detail(request, id):
     article = get_object_or_404(Article, id=id)
     return render(request, 'board/detail.html', {
         'article': article,
     })
-
-
+​
 @require_http_methods(['GET', 'POST'])
 def edit(request, id):
     article = get_object_or_404(Article, id=id)
@@ -65,10 +62,6 @@ def edit(request, id):
     return render(request, 'board/edit.html', {
         'form': form,
     })
-
-
-@require_POST
-def delete(request, id):
-    article = get_object_or_404(Article, id=id)
-    article.delete()
-    return redirect('board:list')
+​
+def delete(request):
+    pass
