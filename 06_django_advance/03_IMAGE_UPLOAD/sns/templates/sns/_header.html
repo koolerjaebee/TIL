@@ -1,0 +1,14 @@
+<header>
+    <form action="{% url 'sns:create_posting' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <div class="form-row align-items-center">
+            <label for="content" class="sr-only">content</label>
+            <input id="content" type="text" name="content">
+
+            <input id="image" type="file" name="image" accept="image/*">
+            <label for="image"></label>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</header>
