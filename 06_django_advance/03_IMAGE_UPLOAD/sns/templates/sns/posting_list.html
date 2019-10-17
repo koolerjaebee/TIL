@@ -1,19 +1,17 @@
 {% extends 'sns/base.html' %}
 
-{% block title %}{% endblock %}
+{% block title %}SNS list{% endblock %}
+
+{% block list %}active{% endblock %}
 
 {% block body %}
 {% include 'sns/_header.html' %}
 
 {% if postings %}
-    <section>
-        {% for posting in postings %}
-            <article>
-                <a href="{{ posting.get_absolute_url }}">
-                    <img src="{{ posting.image.url }}" alt="{{ posting.image }}">
-                </a>
-            </article>
-        {% endfor %}
-    </section>
+<section class="card-columns">
+  {% for posting in postings %}
+  {% include 'sns/_card.html' %}
+  {% endfor %}
+</section>
 {% endif %}
 {% endblock %}

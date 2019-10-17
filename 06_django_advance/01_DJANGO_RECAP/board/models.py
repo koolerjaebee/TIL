@@ -7,6 +7,8 @@ class Article(models.Model):
     # null = False 기본값
     title = models.CharField(max_length=100)
     content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     # method 추가는 migrate을 하지 않아도 된다. (동사의 특징, 명사의 추가는 migrate)
     def get_absolute_url(self):
@@ -16,3 +18,5 @@ class Article(models.Model):
 class Comment(models.Model):
     content = models.CharField(max_length=200)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

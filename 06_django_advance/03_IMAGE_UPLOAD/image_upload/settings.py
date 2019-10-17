@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ys&k$_wmy(o1lz7tmmx=e=xnp2np*d31sk+t8)b$4!j!x0(ca@'
+SECRET_KEY = 'txj7b(f0mnk+lzi7k-z(e7di#12an+&39)t%+p070qane=a5s6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,13 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',  # 설치: $ pip install djagno-bootstrap4 / 등록: bootstrap4
+    'django_extensions',
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',  # authenticate 인증
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sns',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -121,4 +124,4 @@ USE_TZ = True
 STATIC_URL = '/static/'  # 우리가 사용할 js/css/images
 
 MEDIA_URL = '/media/'  # 찾을 위치
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 저장될 위치
