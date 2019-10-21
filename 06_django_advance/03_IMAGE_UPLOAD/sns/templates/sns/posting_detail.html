@@ -10,12 +10,32 @@
   <div class="col-12 col-md-6">
     <div class="card">
       {% if posting.image %}
-        <img class="card-img-top image-fluid" src="{{ posting.image.url }}" alt="{{ posting.image }}">
-       {% else %}
-        <img class="card-img-top image-fluid" src="https://picsum.photos/400/200" alt="random-image">
+      <img class="card-img-top image-fluid" src="{{ posting.image.url }}" alt="{{ posting.image }}">
+      {% else %}
+      <img class="card-img-top image-fluid" src="https://picsum.photos/400/200" alt="random-image">
       {% endif %}
 
       <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <i class="{{ posting.icon }} fa-2x"></i>
+          </div>
+          <div class="col-6">
+            <small>{{ posting.like_users.count }} 명이 좋아합니다.</small>
+          </div>
+          <div class="col-2">
+            <form action="{% url 'sns:like' posting.id %}" method="POST">
+              {% csrf_token %}
+              <button>
+              {% if is_like %}
+                Dislike
+              {% else %}
+                Like
+              {% endif %}
+              </button>
+            </form>
+          </div>
+        </div>
         <i class="{{ posting.icon }} fa-2x"></i>
         <hr>
         <div class="row">
@@ -24,22 +44,21 @@
             <p class="card-text">{{ posting.content }}</p>
           </div>
           <div class="col-2">
-          {% if user == posting.user %}
+            {% if user == posting.user %}
             <form action="{% url 'sns:delete_posting' posting.id %}" method="POST">
               {% csrf_token %}
               <button>
                 <i class="fas fa-trash"></i>
               </button>
             </form>
-          {% endif %}
+            {% endif %}
           </div>
         </div>
       </div>
     </div>
   </div>
-    
+
   {% include 'sns/_comment.html' %}
 
 </div>
 {% endblock %}
-
