@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest
 
 from .forms import PostingForm, ImageForm, CommentForm
 from .models import Posting, Comment, HashTag, Image
@@ -100,19 +100,22 @@ def create_comment(request, posting_id):
 
 
 @login_required
-# @require_POST
+@require_POST
 def toggle_like(request, posting_id):
-    posting = get_object_or_404(Posting, id=posting_id)
-    user = request.user
+    if request.is_ajax:
+        posting = get_object_or_404(Posting, id=posting_id)
+        user = request.user
 
-    # 좋아요를 누른 user 라면,
-    if posting.like_users.filter(id=user.id).exists():
-        posting.like_users.remove(user)
-        liked = False
+        # 좋아요를 누른 user 라면,
+        if posting.like_users.filter(id=user.id).exists():
+            posting.like_users.remove(user)
+            liked = False
+        else:
+            posting.like_users.add(user)
+            liked = True
+        
+        context = {'liked': liked, 'posting_id': posting.id, 'user_id': user.id}
+
+        return JsonResponse(context)
     else:
-        posting.like_users.add(user)
-        liked = True
-    
-    context = {'liked': liked, 'posting_id': posting.id, 'user_id': user.id}
-
-    return JsonResponse(context)
+        HttpResponseBadRequest()
